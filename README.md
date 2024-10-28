@@ -13,9 +13,11 @@ This is a Chrome extension that extracts questions from Google Forms and uses th
 ## Setup Backend
 
 1. Go to `https://aistudio.google.com/apikey`
-2. Create a new project and select "Generative AI" as the service.
-3. Click "Enable API" and select "Gemini" from the list of models.
-4. Copy the API key and paste it in the `backend/.env` file.
+2. Get an API key for the Gemini model.
+3. Copy the API key and paste it in the `backend/.env` file.
+4. Save the file.
+5. Install the required dependencies by running `pip install -r backend/requirements.txt`.
+6. Run the backend by running `uvicorn backend.app:app --reload`.
 
 ## Usage
 
