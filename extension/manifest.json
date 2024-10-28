@@ -1,0 +1,26 @@
+{
+    "manifest_version": 3,
+    "name": "Google Forms Question Extractor",
+    "version": "1.0",
+    "description": "Extract questions from Google Forms and get AI-powered responses",
+    "permissions": [
+      "activeTab",
+      "scripting",
+      "storage"
+    ],
+    "host_permissions": [
+      "https://docs.google.com/forms/*",
+      "http://localhost:8000/*" 
+    ],
+    "content_security_policy": {
+      "extension_pages": "script-src 'self'; object-src 'self'; connect-src http://localhost:8000"
+    },
+    "action": {
+      "default_popup": "popup.html"
+    },
+    "icons": {
+      "48": "icon48.png",
+      "128": "icon128.png"
+    }
+  }
+  
