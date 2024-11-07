@@ -7,7 +7,7 @@ This is a Chrome extension that extracts questions from Google Forms and uses th
 1. Clone the repository to your local machine.
 2. Open Chrome and navigate to `chrome://extensions`.
 3. Enable Developer Mode by clicking the toggle switch in the top right corner.
-4. Click "Load Unpacked" and select the cloned repository folder.
+4. Click "Load Unpacked" and select the extension folder.
 5. The extension should now be installed and ready to use.
 
 ## Setup Backend
