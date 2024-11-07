@@ -1,4 +1,6 @@
 /backend/.env
 /backend/.venv
+/backend/venv
 .vscode
 **/__pycache__/
+/backend/cropped_image.png

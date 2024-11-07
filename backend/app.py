@@ -2,7 +2,8 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 from typing import List
-from ai import getAnswers
+from ai import getAnswers, getScreenshotAnswers
+import ss
 
 app = FastAPI()
 
@@ -29,3 +30,9 @@ class QuestionItem(BaseModel):
 @app.post("/questions")
 async def create_questions(questions: List[QuestionItem]):
     return getAnswers(questions)
+
+@app.get("/screenshot")
+async def get_screenshot():
+    ss.process_screenshot()
+
+    return getScreenshotAnswers()

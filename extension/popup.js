@@ -71,6 +71,34 @@ function extractQuestions() {
   return questions;
 }
 
+document.getElementById('screenshotButton').addEventListener('click', async () => {
+  console.log('Taking screenshot...');
+  const [tab] = await chrome.tabs.query({ active: true, currentWindow: true });
+
+  try {
+    
+    const response = await fetch('http://localhost:8000/screenshot', {
+      method: 'GET'
+    });
+
+    if (response.ok) {
+      const result = await response.json();
+      console.log('Received response:', result);
+  
+      // Store the response in local storage
+      chrome.storage.local.set({ questionsResponse: result });
+  
+      // Display the response JSON in the response div
+      document.getElementById('response').textContent = result
+  } else {
+        throw new Error(`HTTP error! Status: ${response.status}`);
+    }
+  } catch (error) {
+    console.error('Error:', error);
+    document.getElementById('response').textContent = 'Error extracting questions: ' + error.message;
+  }
+});
+
 document.addEventListener('DOMContentLoaded', async () => {
   // Check for stored response and display it
   chrome.storage.local.get('questionsResponse', (data) => {

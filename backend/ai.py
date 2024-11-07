@@ -1,6 +1,7 @@
 import os
 import google.generativeai as genai
 from dotenv import load_dotenv
+import PIL.Image
 
 load_dotenv()
 
@@ -31,4 +32,19 @@ def getAnswers(questions):
         instructions = file.read()
 
     response = chat_session.send_message(f"{instructions}\nHERE ARE THE QUESTIONS:\n{questions}")
+    return response.text
+
+def getScreenshotAnswers():
+    chat_session = model.start_chat(
+        history=[
+        ]
+    )
+
+    with open("INSTRUCTIONS.txt", "r") as file:
+        instructions = file.read()
+
+    
+    img = PIL.Image.open(f'cropped_image.png')
+    response = model.generate_content([instructions, img], stream=True)
+    response.resolve()
     return response.text
