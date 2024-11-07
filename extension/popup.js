@@ -99,6 +99,11 @@ document.getElementById('screenshotButton').addEventListener('click', async () =
   }
 });
 
+document.getElementById('clear').addEventListener('click', async () => {
+  chrome.storage.local.remove('questionsResponse');
+  document.getElementById('response').textContent = '';
+});
+
 document.addEventListener('DOMContentLoaded', async () => {
   // Check for stored response and display it
   chrome.storage.local.get('questionsResponse', (data) => {
@@ -107,4 +112,3 @@ document.addEventListener('DOMContentLoaded', async () => {
       }
   });
 });
-
